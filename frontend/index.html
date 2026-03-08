@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InternLink - Internship Management Platform</title>
+  <style>
+    /* Basic Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+
+    /* Hero Section */
+    header {
+      background: linear-gradient(135deg, #4F46E5, #818CF8);
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    header h1 { font-size: 50px; margin-bottom: 20px; }
+    header p { font-size: 22px; margin-bottom: 40px; }
+    header button {
+      padding: 15px 40px;
+      margin: 10px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      background-color: #fff;
+      color: #4F46E5;
+      transition: 0.3s;
+    }
+    header button:hover { background-color: #E0E7FF; }
+    .hero-img { width: 400px; border-radius: 20px; margin-top: 30px; }
+
+    /* About Section */
+    section { padding: 80px 20px; max-width: 1200px; margin: auto; }
+    .about h2 { color: #4F46E5; font-size: 36px; margin-bottom: 20px; text-align:center; }
+    .about p { max-width: 800px; margin: 0 auto 20px; font-size: 18px; text-align:center; }
+
+    /* Features Section */
+    .features { display: flex; flex-wrap: wrap; justify-content: space-around; margin-top: 40px; }
+    .feature-card {
+      background: #F3F4F6;
+      border-radius: 15px;
+      padding: 30px;
+      margin: 20px;
+      width: 280px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .feature-card:hover { transform: translateY(-5px); }
+    .feature-card h3 { color: #4F46E5; margin-bottom: 15px; }
+    .feature-card p { font-size: 16px; }
+
+    /* Workflow Section */
+    .workflow h2 { color: #4F46E5; font-size: 36px; margin-bottom: 40px; text-align:center; }
+    .steps { display: flex; flex-wrap: wrap; justify-content: space-around; }
+    .step { background: #E0E7FF; border-radius: 15px; padding: 30px; width: 250px; margin: 15px; text-align:center; }
+    .step h3 { margin-bottom: 15px; }
+    .step p { font-size: 16px; }
+
+    /* CTA Section */
+    .cta { background: #4F46E5; color: white; text-align:center; padding: 60px 20px; }
+    .cta button {
+      background: white; color: #4F46E5; border: none; padding: 15px 40px; font-size: 18px; border-radius: 10px; cursor:pointer;
+    }
+    .cta button:hover { background: #E0E7FF; }
+
+    footer { background: #1E293B; color: white; text-align: center; padding: 30px 20px; margin-top:50px; }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <header>
+    <h1>Welcome to InternLink</h1>
+    <p>Your bridge between students and verified internship opportunities</p>
+    <button id="studentBtn">Student Login</button>
+    <button id="smeBtn">SME Login</button>
+    <img class="hero-img" src="https://tint.creativemarket.com/gUWFGtPtVbt1957VflCG5moTx730hKIg3A7OQjt3GdE/width:1200/height:800/gravity:nowe/rt:fill-down/el:1/czM6Ly9maWxlcy5jcmVhdGl2ZW1hcmtldC5jb20vaW1hZ2VzL3NjcmVlbnNob3RzL3Byb2R1Y3R0cy80MjQ1LzQyNDUwLzQyNDUwNzY0L2NvdmVyLXByZXZpZXctby5qcGc?1691389147" alt="Hero Image">
+  </header>
+
+  <!-- About Section -->
+  <section class="about">
+    <h2>About InternLink</h2>
+    <p>InternLink is a web-based platform connecting students, small businesses, and universities. Students can discover verified internships, track applications, and receive recommendations based on skills.</p>
+    <p>SMEs gain access to a pool of motivated students, simplifying recruitment and improving collaboration with local institutions.</p>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="feature-card">
+      <h3>Student Profiles</h3>
+      <p>Create skill-based profiles, showcase your experience, and receive internship recommendations that match your abilities.</p>
+    </div>
+    <div class="feature-card">
+      <h3>SME Listings</h3>
+      <p>Post internship opportunities with clear requirements, track applicants, and manage your hiring process online.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Application Tracking</h3>
+      <p>Students can see their application status, and SMEs can review and manage candidates easily.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Notifications</h3>
+      <p>Receive timely alerts for new matches, application updates, and feedback to stay informed at all times.</p>
+    </div>
+  </section>
+
+  <!-- Workflow Section -->
+  <section class="workflow">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>1. Sign Up</h3>
+        <p>Create your account as a Student or SME and complete your profile.</p>
+      </div>
+      <div class="step">
+        <h3>2. Post / Find Internship</h3>
+        <p>SMEs post opportunities; students search or get matched based on skills.</p>
+      </div>
+      <div class="step">
+        <h3>3. Apply / Review</h3>
+        <p>Students apply and track applications; SMEs review candidates efficiently.</p>
+      </div>
+      <div class="step">
+        <h3>4. Get Matched</h3>
+        <p>Receive recommendations and notifications for internships that best fit your profile.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="cta">
+    <h2>Get Started Today</h2>
+    <p>Join InternLink and discover opportunities or talented students in your area.</p>
+    <button onclick="window.location.href='register.html'">Register Now</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 InternLink. All rights reserved.
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

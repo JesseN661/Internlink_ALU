@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - InternLink</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #E0E7FF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .register-box {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 400px;
+      text-align: center;
+    }
+    .register-box h2 {
+      color: #4F46E5;
+      margin-bottom: 20px;
+    }
+    .register-box input, .register-box select {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .register-box button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4F46E5;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .register-box button:hover {
+      background-color: #4338CA;
+    }
+    /* Profile preview */
+    #profilePreview {
+      margin-top: 10px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: none;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    p { font-size: 14px; }
+    a { color: #4F46E5; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="register-box">
+    <h2>Create Account</h2>
+    
+    <input type="file" id="profileImage" accept="image/*">
+    <img id="profilePreview" src="" alt="Profile Preview">
+
+    <input type="text" id="firstName" placeholder="First Name">
+    <input type="text" id="lastName" placeholder="Last Name">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+
+    <select id="role">
+      <option value="">Select Role</option>
+      <option value="Student">Student</option>
+      <option value="SME">SME</option>
+    </select>
+
+    <button id="registerBtn">Register</button>
+    <p>Already have an account? <a href="login.html">Login</a></p>
+  </div>
+
+  <script>
+    const profileImageInput = document.getElementById('profileImage');
+    const profilePreview = document.getElementById('profilePreview');
+    const registerBtn = document.getElementById('registerBtn');
+
+    // Preview uploaded image
+    profileImageInput.addEventListener('change', function() {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          profilePreview.src = e.target.result;
+          profilePreview.style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Handle registration
+    registerBtn.addEventListener('click', () => {
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const role = document.getElementById('role').value;
+
+      if (!firstName || !lastName || !email || !password || !role) {
+        alert('Please fill in all fields!');
+        return;
+      }
+
+      alert(`Registered successfully as ${role}!\nName: ${firstName} ${lastName}\nEmail: ${email}`);
+      // Here, normally you would save to backend
+      // For demo, we redirect based on role
+      if (role === 'Student') {
+        window.location.href = 'student-dashboard.html';
+      } else {
+        window.location.href = 'sme-dashboard.html';
+      }
+    });
+  </script>
+</body>
+</html>

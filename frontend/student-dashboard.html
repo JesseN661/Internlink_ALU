@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Dashboard</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#f4f6ff;
+}
+
+header{
+background:#4F46E5;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.container{
+width:90%;
+max-width:1000px;
+margin:auto;
+margin-top:30px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:10px;
+margin-bottom:20px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.profile{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.profile img{
+width:80px;
+height:80px;
+border-radius:50%;
+object-fit:cover;
+}
+
+.job{
+border:1px solid #ddd;
+padding:15px;
+margin-top:10px;
+border-radius:6px;
+}
+
+button{
+background:#4F46E5;
+color:white;
+border:none;
+padding:8px 15px;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#3730a3;
+}
+
+input{
+margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>Student Dashboard</h1>
+<p>Browse and apply for internships</p>
+</header>
+
+<div class="container">
+
+<!-- PROFILE -->
+
+<div class="card">
+
+<h2>Your Profile</h2>
+
+<div class="profile">
+
+<img id="profileImage" src="https://via.placeholder.com/80">
+
+<div>
+
+<p><strong>Name:</strong> <span id="studentName">Student</span></p>
+
+<input type="file" id="imageUpload">
+
+</div>
+
+</div>
+
+</div>
+
+<!-- INTERNSHIPS -->
+
+<div class="card">
+
+<h2>Available Internships</h2>
+
+<div id="jobs"></div>
+
+</div>
+
+<!-- APPLICATIONS -->
+
+<div class="card">
+
+<h2>Your Applications</h2>
+
+<div id="applications"></div>
+
+</div>
+
+</div>
+
+<script>
+
+const jobs = JSON.parse(localStorage.getItem("jobs")) || []
+
+const applications = JSON.parse(localStorage.getItem("applications")) || []
+
+const jobContainer = document.getElementById("jobs")
+
+const appContainer = document.getElementById("applications")
+
+// LOAD JOBS
+
+function loadJobs(){
+
+jobContainer.innerHTML=""
+
+jobs.forEach((job,index)=>{
+
+jobContainer.innerHTML += `
+
+<div class="job">
+
+<h3>${job.title}</h3>
+
+<p>${job.description}</p>
+
+<p><strong>Skills:</strong> ${job.skills}</p>
+
+<button onclick="apply(${index})">Apply</button>
+
+</div>
+
+`
+
+})
+
+}
+
+loadJobs()
+
+// APPLY FUNCTION
+
+function apply(index){
+
+const job = jobs[index]
+
+const application = {
+
+title:job.title,
+status:"Pending"
+
+}
+
+applications.push(application)
+
+localStorage.setItem("applications", JSON.stringify(applications))
+
+alert("Application sent!")
+
+loadApplications()
+
+}
+
+// LOAD APPLICATIONS
+
+function loadApplications(){
+
+appContainer.innerHTML=""
+
+applications.forEach(app=>{
+
+appContainer.innerHTML += `
+
+<div class="job">
+
+<h3>${app.title}</h3>
+
+<p>Status: ${app.status}</p>
+
+</div>
+
+`
+
+})
+
+}
+
+loadApplications()
+
+// PROFILE IMAGE UPLOAD
+
+const upload = document.getElementById("imageUpload")
+
+upload.addEventListener("change", function(){
+
+const reader = new FileReader()
+
+reader.onload = function(){
+
+document.getElementById("profileImage").src = reader.result
+
+localStorage.setItem("profileImage", reader.result)
+
+}
+
+reader.readAsDataURL(upload.files[0])
+
+})
+
+// LOAD SAVED IMAGE
+
+const savedImage = localStorage.getItem("profileImage")
+
+if(savedImage){
+
+document.getElementById("profileImage").src = savedImage
+
+}
+
+</script>
+
+</body>
+</html>

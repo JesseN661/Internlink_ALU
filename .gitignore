@@ -26,3 +26,5 @@ uploads/
 # OS
 .DS_Store
 Thumbs.db
+sme-dashboard.html
+sme.js
